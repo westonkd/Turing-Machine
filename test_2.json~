@@ -1,0 +1,17 @@
+[
+    //state 0
+    [
+	//read a zero
+	{
+	    "write": 1,
+	    "direction": "R",
+	    "next_state": 1
+	},
+	//read a 1
+	{
+	    "write": 0,
+	    "direction": "R",
+	    "next_state": 0
+	}
+    ]
+]

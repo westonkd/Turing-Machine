@@ -1,0 +1,19 @@
+{
+    0:{
+	0: {
+	    "write": 1,
+	    "direction": "R",
+	    "next_state": 1
+	},
+	1: {
+	    "write": 1,
+	    "direction": "L",
+	    "next_state": 0
+	}
+    },
+    
+    1:{
+	0: {},
+	1: {},	
+    }
+}

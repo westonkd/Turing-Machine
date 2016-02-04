@@ -1,11 +1,3 @@
-=begin
-A simple program to exercise the TuringMachine class.
-
-This class emulates a durring machine, reading instructions from a
-specified JSON file (See test_2.json for an example).
-=end
-
-
 require 'json'
 
 class Cell
@@ -42,31 +34,18 @@ class TuringMachine
 
   #print out the tape
   def print_tape
-    #Get a list of keys sorted by numeric value
+    puts "Reading Head: #{@reading_head}"
     sorted_keys = @tape.keys.map{|x| x.to_i}.sort.map{|x| x.to_s}
-
-    #use the sorted keys to index the tape
     sorted_keys.each do |key|
-      print "#{@tape[key].value}|" unless @tape[key].being_read
-      print "#{@tape[key].value}*|" if @tape[key].being_read
+      print "#{@tape[key].value}|"
     end
-
     puts ""
   end
 
   def run
 
     while @current_state != @final_state do
-      #if the reading head is at a new cell, create the cell
-      unless @tape.has_key? @reading_head.to_s
-         @tape[@reading_head.to_s] = Cell.new({value: "e", being_read: false})
-      end
-
-      #set the variable that is being read (for display purposes)
-      @tape[@reading_head.to_s].being_read = true
-
       print_tape
-
       #get instructions for the current state
       state = @transition_table[@current_state]
       puts "Current state is #{@current_state}"
@@ -81,11 +60,7 @@ class TuringMachine
 
       #write
       @tape[@reading_head.to_s].value = state["write"]
-
-      puts "Just wrote a #{state["write"]}"
-
-      #The value is no longer being read
-      @tape[@reading_head.to_s].being_read = false
+      puts "Just wrote a #{state["write"]} --> #{@tape[@reading_head.to_s].value}"
 
       #move
       if state["direction"] == "R"
@@ -99,6 +74,7 @@ class TuringMachine
       #update state
       @current_state = state["next_state"]
       puts "Just updated state to #{@current_state}"
+      print_tape
       puts "-------------------------------------------"
     end
   end
