@@ -1,0 +1,46 @@
+[
+    //state 0
+    [
+	//read 0
+	{
+	    "write": 1,
+	    "direction": "L",
+	    "next_state": 1
+	},
+	//read 1
+	{
+	    "write": 0,
+	    "direction": "L",
+	    "next_state": 0
+	},
+	//read e
+	{
+	    "write": "e",
+	    "direction": "R",
+	    "next_state": 1
+	}
+    ],
+    //state 1
+    [
+	//read 0
+	{
+	    "write": 0,
+	    "direction": "L",
+	    "next_state": 1
+	},
+	{
+	    "write": 0,
+	    "direction": "L",
+	    "next_state": 0
+	},
+	{
+	    "write": "e",
+	    "direction": "R",
+	    "next_state": 2
+	}
+    ],
+    //state 2 (final state becaue it's last)
+    [
+	//final state!
+    ]
+]
