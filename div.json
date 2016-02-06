@@ -1,3 +1,4 @@
+//Sample instruction set to divide a binary number by 2 (truncate remainder)
 [
    //state 0
    [
