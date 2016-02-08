@@ -171,7 +171,7 @@ end
 tm = TuringMachine.new("11001100", "div.json")
 
 #output configuration history
-tm.verbos = true
+tm.verbose = true
 
 #run the instruction set
 tm.run
