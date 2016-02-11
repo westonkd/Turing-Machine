@@ -122,7 +122,7 @@ qMultThreeCarry,0,_,_,<,<,<
 
 //pad with 0s if needed
 qMultThreef,_,_,_
-qMultThreeg,0,_,_,-,-,-
+qMultDone,0,_,_,-,-,-
 
 //done with multiplication
 qMultThreef,#,_,_
@@ -147,6 +147,88 @@ qMultThreef,1,0,0,-,-,-
 qMultThreeCarry,_,_,_
 qMultThreef,1,_,_,-,-,-
 
+//multiplication done, prepare to add 1
+qMultDone,0,_,_
+qMultDone,_,0,0,>,>,>
+
+qMultDone,1,_,_
+qMultDone,_,1,0,>,>,>
+
+qMultDone,_,_,_
+qAddOnea,_,_,_,<,<,<
+
+//Add one algorithm
+//-Part a gets the '1' set up to Add
+qAddOnea,_,0,0
+qAddOneb,_,0,1,-,-,-
+
+qAddOnea,_,1,0
+qAddOneb,_,1,1,-,-,-
+
+qAddOnea,_,0,0
+qAddOneb,_,0,1,-,-,-
+
+//-part b adds 1 to the number
+qAddOneb,_,1,1
+qAddOneCarry,0,_,_,<,<,<
+
+qAddOneb,1,1,1
+qAddOneCarry,1,_,_,<,<,<
+
+qAddOneb,0,1,1
+qAddOneCarry,0,_,_,<,<,<
+
+
+qAddOneb,_,0,1
+qAddOneb,1,_,_,<,<,<
+
+qAddOneb,0,0,1
+qAddOneb,1,_,_,<,<,<
+
+qAddOneb,1,0,1
+qAddOneCarry,0,_,_,<,<,<
+
+
+qAddOneb,_,1,0
+qAddOneb,1,_,_,<,<,<
+
+qAddOneb,0,1,0
+qAddOneb,1,_,_,<,<,<
+
+qAddOneb,1,1,0
+qAddOneCarry,0,_,_,<,<,<
+
+
+qAddOneb,_,0,0
+qAddOneb,0,_,_,<,<,<
+
+qAddOneb,0,0,0
+qAddOneb,0,_,_,<,<,<
+
+qAddOneb,1,0,0
+qAddOneb,1,_,_,<,<,<
+
+qAddOneb,#,_,_
+qAddOneDone,#,_,_,-,-,-
+
+//Carry for adding 1
+qAddOneCarry,_,1,1
+qAddOneb,1,1,1,-,-,-
+
+qAddOneCarry,_,0,1
+qAddOneb,1,0,1,-,-,-
+
+qAddOneCarry,_,1,0
+qAddOneb,1,1,0,-,-,-
+
+qAddOneCarry,_,0,0
+qAddOneb,1,0,0,-,-,-
+
+qAddOneCarry,1,1,1
+qAddOneb,1,0,0,-,-,-
+
+qAddOneCarry,_,_,_
+qAddOneb,1,_,_,-,-,-
 
 
 
@@ -159,6 +241,9 @@ qDivideTwoTransition,1,1,_,<,<,-
 
 qDivideTwoTransition,_,_,_
 qDivideTwoEndTape,_,_,_,>,>,>
+
+qDivideTwoTransition,#,_,_
+qDivideTwoEndTape,#,_,_,>,>,>
 
 //Go to the end of the first tape
 //- If we read any combination of symbosl other than a _
