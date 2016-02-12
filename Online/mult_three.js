@@ -1,16 +1,15 @@
-//LOAD AN EXAMPLE TO TRY
-//then load an input and click play
-
-//Syntax:
-
 //-------CONFIGURATION
-name: Test
+name: Naive 3n+1
 init: qInit
 accept: qFinal
 
-//-------DELTA FUNCTION:
-//[current_state],[read_symbol]
-//[new_state],[write_symbol],[>|<|-]
+//***************************************
+// This implementation of the 3n+1
+// conjecture uses the standard algorithm:
+// It literally does the 3x+1 operation
+// if the number is even, without
+// using fancy bit tricks.
+//***************************************
 
 //Check if the number is odd
 qInit,0,_,_
@@ -230,6 +229,9 @@ qAddOneb,1,0,0,-,-,-
 qAddOneCarry,_,_,_
 qAddOneb,1,_,_,-,-,-
 
+//done adding, loop back to init
+qAddOneDone, #,_,_
+qInit,#,_,_,>,-,-
 
 
 //Copy the number into tape 2
